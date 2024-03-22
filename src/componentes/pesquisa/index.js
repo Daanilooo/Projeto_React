@@ -25,6 +25,7 @@ const Subtitulo = styled.h3`
 `
 const Resultado = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -48,8 +49,12 @@ function Pesquisa() {
             <Subtitulo>Encontre seu livro em nossa estante</Subtitulo>
             <Input placeholder="Escreva sua próxima leitura" onBlur={evento =>{
                 const textoDigitado = evento.target.value
-                const resultadoPesquisa = livros.filter(livro => livro.nome.includes(textoDigitado))
-                setLivrosPesquisados(resultadoPesquisa)
+                if (textoDigitado !== "") {
+                    const resultadoPesquisa = livros.filter(livro => livro.nome.includes(textoDigitado))
+                    setLivrosPesquisados(resultadoPesquisa)
+                } else {
+                    setLivrosPesquisados([])
+                }
 
             } } />
             {LivrosPesquisados.map( livro =>(
