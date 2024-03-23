@@ -10,6 +10,7 @@ const PesquisaContainer = styled.section`
     padding: 85px 0;
     height: 270px;
     width: 100%;
+    padding-bottom : 200px;
 `
 
 const Titulo = styled.h2`
@@ -23,13 +24,17 @@ const Subtitulo = styled.h3`
     font-weight: 500;
     margin-bottom: 40px;
 `
-const Resultado = styled.div`
+const Resultados = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+`
+const Resultado = styled.div`
+
+    margin: 20px;
     cursor: pointer;
+    transition: 0.4s all;
     p {
         width: 200px;
     }
@@ -37,6 +42,7 @@ const Resultado = styled.div`
         width: 100px;
     }
     &:hover {
+        transform: scale(1.1)
         border: 1px solid white;
     }
 `
@@ -57,12 +63,14 @@ function Pesquisa() {
                 }
 
             } } />
+            <Resultados>
             {LivrosPesquisados.map( livro =>(
                 <Resultado>
                     <p>{livro.nome}</p>
                     <img src={livro.src}/>
                 </Resultado>
             )) }
+            </Resultados>
 
         </PesquisaContainer>
     )
